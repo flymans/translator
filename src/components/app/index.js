@@ -16,12 +16,12 @@ const App = () => {
         setTranslatedText(
             text
                 .split('')
-                .map(
-                    char =>
-                        dictionary[lang][0][char] ||
-                        dictionary[lang][1][char] ||
-                        char
-                )
+                .map(char => {
+                    const requiredDict = dictionary[lang].find(
+                        dict => dict[char]
+                    );
+                    return requiredDict ? requiredDict[char] : char;
+                })
                 .join('')
         );
     };
