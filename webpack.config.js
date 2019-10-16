@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = {
     entry: './src/index.js',
     output: {
-        path: resolve(__dirname, '/public'),
+        path: resolve(__dirname, 'public'),
         filename: 'index-bundle.js'
     },
     module: {
