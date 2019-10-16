@@ -1,4 +1,10 @@
-export const dictionaryEnToRu = {
+const swap = dict =>
+    Object.entries(dict).reduce(
+        (acc, [key, value]) => ({...acc, [value]: key}),
+        {}
+    );
+
+const dictionaryEnToRu = {
     q: 'й',
     w: 'ц',
     e: 'у',
@@ -33,7 +39,7 @@ export const dictionaryEnToRu = {
     '.': 'ю'
 };
 
-export const dictionaryEnToRuUpperCase = {
+const dictionaryEnToRuUpperCase = {
     Q: 'Й',
     W: 'Ц',
     E: 'У',
@@ -66,4 +72,12 @@ export const dictionaryEnToRuUpperCase = {
     M: 'Ь',
     '<': 'Б',
     '>': 'Ю'
+};
+
+const dictionaryRuToEn = swap(dictionaryEnToRu);
+const dictionaryRuToEnUpperCase = swap(dictionaryEnToRuUpperCase);
+
+export default {
+    RU: [dictionaryEnToRu, dictionaryEnToRuUpperCase],
+    EN: [dictionaryRuToEn, dictionaryRuToEnUpperCase]
 };
