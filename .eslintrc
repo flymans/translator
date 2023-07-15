@@ -1,5 +1,5 @@
 {
-    "extends": ["airbnb", "prettier", "prettier/react"],
+    "extends": ["airbnb", "prettier"],
     "plugins": ["prettier"],
     "rules": {
         "react/jsx-filename-extension": [
@@ -26,7 +26,20 @@
         "Blob": true,
         "navigator": true
     },
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "requireConfigFile": false
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
     "settings": {
         "import/resolver": "webpack"
     }

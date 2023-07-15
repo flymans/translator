@@ -2,28 +2,14 @@ import React, {useState} from 'react';
 import {Header, Flag, Button, Form, TextArea, Divider} from 'semantic-ui-react';
 import {Wrapper, ButtonBar, TextAreaBar} from './styled';
 import GlobalStyle from './globalStyle';
-import dictionary from './dictionary';
+import {handleTranslate, handleTranslateToBBCode, handleTranslateToMarkdown} from './translators';
 
-const App = () => {
+function App() {
     const [text, setText] = useState('');
     const [translatedText, setTranslatedText] = useState('');
 
     const handleTextChange = ({target: {value}}) => {
         setText(value);
-    };
-
-    const handleTranslate = ({target: {name: lang}}) => {
-        setTranslatedText(
-            text
-                .split('')
-                .map(char => {
-                    const requiredDict = dictionary[lang].find(
-                        dict => dict[char]
-                    );
-                    return requiredDict ? requiredDict[char] : char;
-                })
-                .join('')
-        );
     };
 
     return (
@@ -32,32 +18,28 @@ const App = () => {
             <Header as="h1">Useless Internet translator</Header>
             <Form>
                 <ButtonBar>
-                    <Button onClick={handleTranslate} name="RU">
+                    <Button onClick={handleTranslate(text, setTranslatedText)} name="RU">
                         <Flag name="ru" />
                         Translate to RU
                     </Button>
-                    <Button onClick={handleTranslate} name="EN">
+                    <Button onClick={handleTranslate(text, setTranslatedText)} name="EN">
                         <Flag name="gb" />
                         Translate to EN
                     </Button>
                 </ButtonBar>
                 <Divider />
+                <ButtonBar>
+                    <Button onClick={handleTranslateToBBCode(text, setTranslatedText)}>Translate to BBCode</Button>
+                    <Button onClick={handleTranslateToMarkdown(text, setTranslatedText)}>Translate to Markdown</Button>
+                </ButtonBar>
+                <Divider />
                 <TextAreaBar>
-                    <TextArea
-                        rows="5"
-                        onChange={handleTextChange}
-                        placeholder="Type text..."
-                        value={text}
-                    />
+                    <TextArea rows="5" onChange={handleTextChange} placeholder="Type text..." value={text} />
                     <Divider />
-                    <TextArea
-                        rows="5"
-                        placeholder="Translation will be shown here..."
-                        value={translatedText}
-                    />
+                    <TextArea rows="5" placeholder="Translation will be shown here..." value={translatedText} />
                 </TextAreaBar>
             </Form>
         </Wrapper>
     );
-};
+}
 export default App;
