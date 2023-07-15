@@ -26,9 +26,6 @@ function App() {
                         <Flag name="gb" />
                         Translate to EN
                     </Button>
-                </ButtonBar>
-                <Divider />
-                <ButtonBar>
                     <Button onClick={handleTranslateToBBCode(text, setTranslatedText)}>Translate to BBCode</Button>
                     <Button onClick={handleTranslateToMarkdown(text, setTranslatedText)}>Translate to Markdown</Button>
                 </ButtonBar>

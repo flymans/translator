@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
 body {
     background-color: #E0E1E2;
 }
+form {
+    width: 70%;
+}
 `;
 
 export default GlobalStyle;
