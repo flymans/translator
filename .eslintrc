@@ -33,7 +33,8 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "requireConfigFile": false
+        "requireConfigFile": false,
+        "plugins": ["react"]
     },
     "env": {
         "browser": true,
